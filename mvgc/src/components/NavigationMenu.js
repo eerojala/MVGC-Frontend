@@ -7,7 +7,13 @@ const NavigationMenu = () => {
     return (
         <Menu inverted>
             <Menu.Item link>
+                <Link to ="/platforms">Platforms</Link>
+            </Menu.Item>
+            <Menu.Item link>
                 <Link to ="/games">Games</Link>
+            </Menu.Item>
+            <Menu.Item link>
+                <Link to ="/login">Login</Link>
             </Menu.Item>
         </Menu>
     )

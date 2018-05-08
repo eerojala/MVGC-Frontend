@@ -1,6 +1,11 @@
 import axios from 'axios'
 
 const baseUrl = '/api/platforms'
+let token = null
+
+const setToken = (newToken) => {
+    token = `bearer ${newToken}`
+}
 
 const getAll = async () => {
     const response = await axios.get(baseUrl)
@@ -9,9 +14,13 @@ const getAll = async () => {
 }
 
 const create = async (content) => {
-    const response = await axios.post(baseUrl, content)
+    const config = {
+        headers: { 'Authorization': token }
+    }
+
+    const response = await axios.post(baseUrl, content, config)
 
     return response.data
 }
 
-export default { getAll, create }
+export default { setToken, getAll, create }

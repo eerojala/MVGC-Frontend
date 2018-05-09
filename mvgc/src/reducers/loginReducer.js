@@ -1,4 +1,5 @@
 import loginService from '../services/login'
+import platformService from '../services/platforms'
 
 const loginReducer = (state = null, action) => {
     switch (action.type) {
@@ -11,12 +12,20 @@ const loginReducer = (state = null, action) => {
 
 export const login = (credentials) => {
     return async (dispatch) => {
-        const user = await loginService.login(credentials)
+        try {
+            const user = await loginService.login(credentials)
 
-        dispatch({
-            type: 'LOGIN',
-            user: user
-        })
+            window.localStorage.setItem('loggedinUser', JSON.stringify(user))
+            platformService.setToken(user.token)
+            console.log('Successfully logged in!')
+            
+            dispatch({
+                type: 'LOGIN',
+                user: user
+            })
+        } catch (exception) {
+            console.log('Login failed')
+        }
     }
 }
 

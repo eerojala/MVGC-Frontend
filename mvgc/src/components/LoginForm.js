@@ -1,32 +1,41 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { login } from '../reducers/loginReducer'
 
-const LoginForm = (props) => {
-    return (
-        <div>
-            <h2>Log in to MVGC</h2>
-            <form onSubmit={props.login}>
-                <div>
-                    Username: 
-                    <input 
-                        type="text"
-                        name="username"
-                        value={props.username}
-                        onChange={props.handleFieldChange}
-                    />
-                </div>
-                <div>
-                    Password:
-                    <input 
-                        type="text"
-                        name="password"
-                        value={props.password}
-                        onChange={props.handleFieldChange}
-                    />
-                </div>
-                <button type="submit">Log in</button>
-            </form>
-        </div>
-    )
+class LoginForm extends React.Component {
+    sendLoginCredentials = async (event) => {
+        event.preventDefault()
+        const credentials = { 
+            username: event.target.username.value,
+            password: event.target.password.value 
+        }
+
+       this.props.login(credentials)
+    }
+
+    render() {
+        return (
+            <div>
+                <h2>Log in to MVGC</h2>
+                <form onSubmit={this.sendLoginCredentials}>
+                    <div>
+                        Username: <input name="username" />
+                    </div>
+                    <div>
+                        Password: <input name="password" type="password" />
+                    </div>
+                    
+                    <button>Log in</button>
+                </form>
+            </div>
+        )
+    }
 }
 
-export default LoginForm
+const mapDispatchToProps = {
+    login
+}
+
+const ConnectedLoginForm = connect(null, mapDispatchToProps) (LoginForm)
+
+export default ConnectedLoginForm

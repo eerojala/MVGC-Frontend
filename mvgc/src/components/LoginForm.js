@@ -5,10 +5,14 @@ import { login } from '../reducers/loginReducer'
 class LoginForm extends React.Component {
     sendLoginCredentials = async (event) => {
         event.preventDefault()
+
         const credentials = { 
             username: event.target.username.value,
             password: event.target.password.value 
         }
+
+        event.target.username.value = ''
+        event.target.password.value = ''
 
        this.props.login(credentials)
     }
@@ -32,9 +36,7 @@ class LoginForm extends React.Component {
     }
 }
 
-const mapDispatchToProps = {
-    login
-}
+const mapDispatchToProps = { login }
 
 const ConnectedLoginForm = connect(null, mapDispatchToProps) (LoginForm)
 

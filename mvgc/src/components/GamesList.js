@@ -15,9 +15,7 @@ class GamesList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
-        games: state.games
-    }
+    return { games: state.games }
 }
 
 const ConnectedGamesList = connect(mapStateToProps) (GamesList)

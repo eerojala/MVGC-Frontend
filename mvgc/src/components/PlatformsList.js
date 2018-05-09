@@ -1,16 +1,23 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const PlatformsList = ({ platforms }) => {
-    return (
-        <div>
-            <h2>Platforms</h2>
-            <ul>
-                {platforms.map(platforms => <li key={platforms.id}>
-                    {platforms.name}
-                </li>)}
-            </ul>
-        </div>
-    )
+class PlatformsList extends React.Component {
+    render() {
+        return (
+            <div>
+                <h2>Platforms</h2>
+                <ul>
+                    {this.props.platforms.map(platforms => <li key={platforms.id}>{platforms.name}</li>)}
+                </ul>
+            </div>
+        )
+    }
 }
 
-export default PlatformsList
+const mapStateToProps = (state) => {
+    return { platforms: state.platforms }
+}
+
+const ConnectedPlatformsList = connect(mapStateToProps) (PlatformsList)
+
+export default ConnectedPlatformsList

@@ -26,6 +26,7 @@ class App extends React.Component {
                 <Router>
                     <div>
                         <NavigationMenu />
+                        <Route exact path='/platforms' render={() => <PlatformsView />} />
                         <Route exact path='/games' render={() => <GamesList />} />
                         <Route exact path='/login' render={() => <LoginForm />} />
                     </div>

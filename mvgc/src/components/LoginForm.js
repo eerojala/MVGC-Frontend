@@ -22,13 +22,8 @@ class LoginForm extends React.Component {
             <div>
                 <h2>Log in to MVGC</h2>
                 <form onSubmit={this.sendLoginCredentials}>
-                    <div>
-                        Username: <input name="username" />
-                    </div>
-                    <div>
-                        Password: <input name="password" type="password" />
-                    </div>
-                    
+                    <div>Username: <input name="username" /></div>
+                    <div>Password: <input name="password" type="password" /></div>     
                     <button>Log in</button>
                 </form>
             </div>

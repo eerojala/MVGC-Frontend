@@ -24,15 +24,9 @@ class PlatformForm extends React.Component {
             <div>
                 <h3>Create new</h3>
                 <form onSubmit={this.createPlatform}>
-                    <div>
-                        Name: <input name="name" />
-                    </div>
-                    <div>
-                        Creator: <input name="creator" />
-                    </div>
-                    <div>
-                        Year: <input name="year" />
-                    </div>
+                    <div>Name: <input name="name" /></div>
+                    <div>Creator: <input name="creator" /></div>
+                    <div>Year: <input name="year" /></div>
                     <button>Create</button>
                 </form>
             </div>

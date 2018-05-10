@@ -10,7 +10,7 @@ import { gameInit } from './reducers/gameReducer'
 // Components
 import NavigationMenu from './components/NavigationMenu'
 import PlatformsView from './components/PlatformsView'
-import GamesList from './components/GamesList'
+import GamesView from './components/GamesView'
 import LoginForm from './components/LoginForm'
 
 class App extends React.Component {
@@ -27,7 +27,7 @@ class App extends React.Component {
                     <div>
                         <NavigationMenu />
                         <Route exact path='/platforms' render={() => <PlatformsView />} />
-                        <Route exact path='/games' render={() => <GamesList />} />
+                        <Route exact path='/games' render={() => <GamesView />} />
                         <Route exact path='/login' render={() => <LoginForm />} />
                     </div>
                 </Router>

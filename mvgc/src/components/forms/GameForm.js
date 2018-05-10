@@ -13,11 +13,11 @@ class GameForm extends React.Component {
             name: event.target.name.value,
             platform: this.platform,
             year: event.target.year.value,
-            developers: event.target.developers.value,
-            publishers: event.target.publishers.value
+            developers: event.target.developers.value.split(", "),
+            publishers: event.target.publishers.value.split(", ")
         }
-        console.log(content)
-        // this.props.gameCreation(content)
+        
+        this.props.gameCreation(content)
     }
 
     render() {

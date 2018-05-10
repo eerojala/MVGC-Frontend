@@ -8,10 +8,10 @@ import { platformInit } from './reducers/platformReducer'
 import { gameInit } from './reducers/gameReducer' 
 
 // Components
-import NavigationMenu from './components/NavigationMenu'
-import PlatformsView from './components/PlatformsView'
-import GamesView from './components/GamesView'
-import LoginForm from './components/LoginForm'
+import NavigationMenu from './components/misc/NavigationMenu'
+import PlatformsView from './components/views/PlatformsView'
+import GamesView from './components/views/GamesView'
+import LoginForm from './components/forms/LoginForm'
 
 class App extends React.Component {
     componentDidMount() {

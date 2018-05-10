@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { platformCreation } from '../reducers/platformReducer'
+import { platformCreation } from '../../reducers/platformReducer'
 
 class PlatformForm extends React.Component {
     createPlatform = async (event) => {

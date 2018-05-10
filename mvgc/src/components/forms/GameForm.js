@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { gameCreation } from '../reducers/gameReducer'
+import { gameCreation } from '../../reducers/gameReducer'
 
 class GameForm extends React.Component {
     createGame = async (event) => {

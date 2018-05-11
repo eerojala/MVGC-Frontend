@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 class PlatformsList extends React.Component {
     render() {
@@ -17,7 +18,7 @@ class PlatformsList extends React.Component {
                     </Table.Header>
                     <Table.Body>
                         {this.props.platforms.map(platform => <Table.Row key={platform.id}>
-                            <Table.Cell>{platform.name}</Table.Cell>
+                            <Table.Cell><Link to={`/platforms/${platform.id}`}>{platform.name}</Link></Table.Cell>
                             <Table.Cell>{platform.creator}</Table.Cell>
                             <Table.Cell>{platform.year}</Table.Cell>
                         </Table.Row>)}

@@ -33,6 +33,4 @@ const mapStateToProps = (state) => {
     return { platforms: state.platforms }
 }
 
-const ConnectedPlatformsList = connect(mapStateToProps) (PlatformsList)
-
-export default ConnectedPlatformsList
+export default connect(mapStateToProps) (PlatformsList)

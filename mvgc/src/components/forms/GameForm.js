@@ -69,6 +69,4 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = { gameCreation }
 
-const ConnectedGameForm = connect(mapStateToProps, mapDispatchToProps) (GameForm)
-
-export default ConnectedGameForm
+export default connect(mapStateToProps, mapDispatchToProps) (GameForm)

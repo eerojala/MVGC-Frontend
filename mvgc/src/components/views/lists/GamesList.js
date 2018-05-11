@@ -33,6 +33,4 @@ const mapStateToProps = (state) => {
     return { games: state.games }
 }
 
-const ConnectedGamesList = connect(mapStateToProps) (GamesList)
-
-export default ConnectedGamesList
+export default connect(mapStateToProps) (GamesList)

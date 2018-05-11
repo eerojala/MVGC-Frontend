@@ -33,6 +33,4 @@ class LoginForm extends React.Component {
 
 const mapDispatchToProps = { login }
 
-const ConnectedLoginForm = connect(null, mapDispatchToProps) (LoginForm)
-
-export default ConnectedLoginForm
+export default connect(null, mapDispatchToProps) (LoginForm)

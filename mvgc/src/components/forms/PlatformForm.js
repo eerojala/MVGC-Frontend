@@ -36,6 +36,4 @@ class PlatformForm extends React.Component {
 
 const mapDispatchToProps = { platformCreation }
 
-const ConnectedPlatformForm = connect(null, mapDispatchToProps) (PlatformForm)
-
-export default ConnectedPlatformForm
+export default connect(null, mapDispatchToProps) (PlatformForm)

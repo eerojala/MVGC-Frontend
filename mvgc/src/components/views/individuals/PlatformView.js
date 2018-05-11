@@ -20,7 +20,7 @@ class PlatformView extends React.Component {
                 <div>
                     <h3>Games: </h3>
                     <ul>
-                        {platform.games.map(game => <li key={game.id}>{game.name}</li>)}
+                        {platform.games.map(game => <li key={game._id}>{game.name}</li>)}
                     </ul>
                 </div>
             </div>

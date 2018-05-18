@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { config } from '../util/serviceHelper'
 
-const baseUrl = '/api/platforms'
+const baseUrl = '/api/usergames'
 
 const getAll = async () => {
     const response = await axios.get(baseUrl)

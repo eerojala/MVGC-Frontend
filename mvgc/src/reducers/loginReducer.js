@@ -1,6 +1,5 @@
 import loginService from '../services/login'
-import platformService from '../services/platforms'
-import gameService from '../services/games'
+import { setToken } from '../util/serviceHelper'
 
 const loginReducer = (state = null, action) => {
     switch (action.type) {
@@ -17,8 +16,7 @@ export const login = (credentials) => {
             const user = await loginService.login(credentials)
 
             window.localStorage.setItem('loggedinUser', JSON.stringify(user))
-            platformService.setToken(user.token)
-            gameService.setToken(user.token)
+            setToken(user.token)
             console.log('Successfully logged in!')
             
             dispatch({
@@ -27,6 +25,7 @@ export const login = (credentials) => {
             })
         } catch (exception) {
             console.log('Login failed')
+            console.log(exception)
         }
     }
 }

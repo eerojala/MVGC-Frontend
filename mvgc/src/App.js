@@ -14,6 +14,7 @@ import PlatformsView from './components/views/PlatformsView'
 import PlatformView from './components/views/individuals/PlatformView'
 import GamesView from './components/views/GamesView'
 import GameView from './components/views/individuals/GameView'
+import AddGameForm from './components/forms/AddGameForm'
 import UsersList from './components/views/lists/UsersList'
 import LoginForm from './components/forms/LoginForm'
 
@@ -35,6 +36,7 @@ class App extends React.Component {
                         <Route exact path='/platforms/:id' render={({ match }) => <PlatformView platformId={match.params.id} />} />
                         <Route exact path='/games' render={() => <GamesView />} />
                         <Route exact path='/games/:id' render={({ match }) => <GameView gameId={match.params.id} />} />
+                        <Route exact path='/games/:id/add' render={({ match }) => <AddGameForm gameId={match.params.id} />} />
                         <Route exact path='/users' render={() => <UsersList />} />
                         <Route exact path='/login' render={() => <LoginForm />} />
                     </div>

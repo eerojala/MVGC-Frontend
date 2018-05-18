@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { Form, Dropdown, Button } from 'semantic-ui-react'
 import { gameCreation } from '../../reducers/gameReducer'
 
-class GameForm extends React.Component {
+// Allows admins to create a new game for the database
+class GameCreationForm extends React.Component {
     platform = null
 
     createGame = async (event) => {
@@ -69,4 +70,4 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = { gameCreation }
 
-export default connect(mapStateToProps, mapDispatchToProps) (GameForm)
+export default connect(mapStateToProps, mapDispatchToProps) (GameCreationForm)

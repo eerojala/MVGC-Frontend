@@ -1,11 +1,11 @@
 import React from 'react'
-import GameForm from '../forms/GameForm'
+import GameCreaftionForm from '../forms/GameCreationForm'
 import GamesList from './lists/GamesList'
 
 const GamesView = (props) => {
     return (
         <div>
-            <GameForm />
+            <GameCreaftionForm />
             <GamesList />
         </div>
     )

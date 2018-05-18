@@ -1,11 +1,7 @@
 import axios from 'axios'
+import { config } from '../util/serviceHelper'
 
 const baseUrl = '/api/games'
-let token = null
-
-const setToken = (newToken) => {
-    token = `bearer ${newToken}`
-}
 
 const getAll = async () => {
     const response = await axios.get(baseUrl)
@@ -14,13 +10,9 @@ const getAll = async () => {
 }
 
 const create = async (content) => {
-    const config = {
-        headers: { 'Authorization': token }
-    }
-
     const response = await axios.post(baseUrl, content, config)
 
     return response.data
 }
 
-export default { setToken, getAll, create }
+export default { getAll, create }

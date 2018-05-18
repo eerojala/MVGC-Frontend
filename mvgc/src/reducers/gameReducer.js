@@ -24,12 +24,17 @@ export const gameInit = (data) => {
 
 export const gameCreation = (content) => {
     return async (dispatch) => {
-        const newGame = await gameService.create(content)
+        try {
+            const newGame = await gameService.create(content)
 
-        dispatch ({
-            type: 'NEW_GAME',
-            data: newGame
-        })
+            dispatch ({
+                type: 'NEW_GAME',
+                data: newGame
+            })
+        } catch (exception) {
+            console.log('Error trying to create a new game')
+            console.log(exception)
+        }
     }
 }
 

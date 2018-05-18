@@ -5,12 +5,14 @@ import platformReducer from './reducers/platformReducer'
 import gameReducer from './reducers/gameReducer'
 import loginReducer from './reducers/loginReducer'
 import userReducer from './reducers/userReducer'
+import userGameReducer from './reducers/userGameReducer'
 
 const reducer = combineReducers({
     platforms: platformReducer,
     games: gameReducer,
-    login: loginReducer,
+    loggedInUser: loginReducer,
     users: userReducer, 
+    userGames: userReducer
 })
 
 const store = createStore(

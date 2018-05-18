@@ -24,12 +24,17 @@ export const platformInit = (data) => {
 
 export const platformCreation = (content) => {
     return async (dispatch) => {
-        const newPlatform = await platformService.create(content)
+        try {
+            const newPlatform = await platformService.create(content)
 
-        dispatch({
-            type: 'NEW_PLATFORM',
-            data: newPlatform
-        })
+            dispatch({
+                type: 'NEW_PLATFORM',
+                data: newPlatform
+            })
+        } catch (exception) {
+            console.log('Error trying to create a new platform')
+            console.log(exception)
+        }
     }
 }
  

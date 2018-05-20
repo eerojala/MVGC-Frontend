@@ -1,9 +1,9 @@
-let token = null
+let config = null
 
-export const setToken = (newToken) => {
-    token = `bearer ${newToken}`
+export const setConfig = (newToken) => {
+    config = { headers: { 'Authorization': `bearer ${newToken}` } }
 }
 
-export const config = {
-    headers: { 'Authorization': token }
+export const getConfig = () => {
+    return config
 }

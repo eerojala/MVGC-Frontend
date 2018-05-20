@@ -12,14 +12,13 @@ class AddGameForm extends React.Component {
         event.preventDefault()
 
         const content = {
-            user: this.props.loggedInUser,
-            game: this.props.game,
+            game: this.props.game.id,
             status: this.status,
             score: this.score
         }
 
         console.log(content)
-        console.log(event.target)
+        this.props.userGameCreation(content)
     }
 
     render() {
@@ -56,10 +55,10 @@ class AddGameForm extends React.Component {
 
 const mapStateToProps = (state, props) => {
     if (state.games === null) {
-        return { game: null, loggedInUser: state.loggedInUser }
+        return { game: null }
     }
 
-    return { game: state.games.find(game => game.id === props.gameId), loggedInUser: state.loggedInUser }
+    return { game: state.games.find(game => game.id === props.gameId) }
 }
 
 const mapDispatchToProps = { userGameCreation }

@@ -31,6 +31,8 @@ export const userGameCreation = (content) => {
                 type: 'NEW_USER_GAME',
                 data: newUserGame
             })
+
+            console.log('Successfully added game to your collection!')
         } catch (exception) {
             console.log('Error trying to add game to collection')
             console.log(exception)

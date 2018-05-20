@@ -10,9 +10,9 @@ import userGameReducer from './reducers/userGameReducer'
 const reducer = combineReducers({
     platforms: platformReducer,
     games: gameReducer,
-    loggedInUser: loginReducer,
+    login: loginReducer,
     users: userReducer, 
-    userGames: userReducer
+    userGames: userGameReducer
 })
 
 const store = createStore(

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { config } from '../util/serviceHelper'
+import { getConfig } from '../util/serviceHelper'
 
 const baseUrl = '/api/games'
 
@@ -10,7 +10,7 @@ const getAll = async () => {
 }
 
 const create = async (content) => {
-    const response = await axios.post(baseUrl, content, config)
+    const response = await axios.post(baseUrl, content, getConfig())
 
     return response.data
 }

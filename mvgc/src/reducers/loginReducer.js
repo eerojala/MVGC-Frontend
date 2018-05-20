@@ -1,5 +1,5 @@
 import loginService from '../services/login'
-import { setToken } from '../util/serviceHelper'
+import { setConfig } from '../util/serviceHelper'
 
 const loginReducer = (state = null, action) => {
     switch (action.type) {
@@ -15,8 +15,8 @@ export const login = (credentials) => {
         try {
             const user = await loginService.login(credentials)
 
-            window.localStorage.setItem('loggedinUser', JSON.stringify(user))
-            setToken(user.token)
+            window.localStorage.setItem('loggedInUser', JSON.stringify(user))
+            setConfig(user.token)
             console.log('Successfully logged in!')
             
             dispatch({

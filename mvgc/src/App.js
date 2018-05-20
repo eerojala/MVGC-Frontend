@@ -9,14 +9,15 @@ import { gameInit } from './reducers/gameReducer'
 import { userInit } from './reducers/userReducer'
 
 // Components
-import NavigationMenu from './components/misc/NavigationMenu'
-import PlatformsView from './components/views/PlatformsView'
-import PlatformView from './components/views/individuals/PlatformView'
-import GamesView from './components/views/GamesView'
-import GameView from './components/views/individuals/GameView'
 import AddGameForm from './components/forms/AddGameForm'
-import UsersList from './components/views/lists/UsersList'
 import LoginForm from './components/forms/LoginForm'
+import NavigationMenu from './components/misc/NavigationMenu'
+import GamesView from './components/views/GamesView'
+import PlatformsView from './components/views/PlatformsView'
+import GameView from './components/views/individuals/GameView'
+import PlatformView from './components/views/individuals/PlatformView'
+import UserView from './components/views/individuals/UserView'
+import UsersList from './components/views/lists/UsersList'
 
 class App extends React.Component {
     componentDidMount() {
@@ -38,6 +39,7 @@ class App extends React.Component {
                         <Route exact path='/games/:id' render={({ match }) => <GameView gameId={match.params.id} />} />
                         <Route exact path='/games/:id/add' render={({ match }) => <AddGameForm gameId={match.params.id} />} />
                         <Route exact path='/users' render={() => <UsersList />} />
+                        <Route exact path='/users/:id' render={({ match }) => <UserView userId={match.params.id} />} />
                         <Route exact path='/login' render={() => <LoginForm />} />
                     </div>
                 </Router>

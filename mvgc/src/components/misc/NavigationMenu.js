@@ -3,7 +3,7 @@ import React from 'react'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-const NavigationMenu = () => {
+const NavigationBar = () => {
     return (
         <Menu inverted>
             <Menu.Item link>
@@ -25,4 +25,4 @@ const NavigationMenu = () => {
     )
 }
 
-export default NavigationMenu
+export default NavigationBar

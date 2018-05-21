@@ -12,7 +12,7 @@ import { userInit } from './reducers/userReducer'
 import AddGameForm from './components/forms/AddGameForm'
 import LoginForm from './components/forms/LoginForm'
 import UserRegistrationForm from './components/forms/UserRegistrationForm'
-import NavigationMenu from './components/misc/NavigationMenu'
+import NavigationBar from './components/misc/NavigationMenu'
 import GamesView from './components/views/GamesView'
 import PlatformsView from './components/views/PlatformsView'
 import GameView from './components/views/individuals/GameView'
@@ -33,16 +33,16 @@ class App extends React.Component {
                 <h1>My video game collection</h1>
                 <Router>
                     <div>
-                        <NavigationMenu />
-                        <Route exact path='/platforms' render={() => <PlatformsView />} />
-                        <Route exact path='/platforms/:id' render={({ match }) => <PlatformView platformId={match.params.id} />} />
-                        <Route exact path='/games' render={() => <GamesView />} />
-                        <Route exact path='/games/:id' render={({ match }) => <GameView gameId={match.params.id} />} />
-                        <Route exact path='/games/:id/add' render={({ match }) => <AddGameForm gameId={match.params.id} />} />
-                        <Route exact path='/users' render={() => <UsersList />} />
-                        <Route exact path='/users/:id' render={({ match }) => <UserView userId={match.params.id} />} />
-                        <Route exact path='/login' render={() => <LoginForm />} />
-                        <Route exact path='/register' render={() => <UserRegistrationForm />} />
+                        <NavigationBar />
+                        <Route exact path="/platforms" render={() => <PlatformsView />} />
+                        <Route exact path="/platforms/:id" render={({ match }) => <PlatformView platformId={match.params.id} />} />
+                        <Route exact path="/games" render={() => <GamesView />} />
+                        <Route exact path="/games/:id" render={({ match }) => <GameView gameId={match.params.id} />} />
+                        <Route exact path="/games/:id/add" render={({ match }) => <AddGameForm gameId={match.params.id} />} />
+                        <Route exact path="/users" render={() => <UsersList />} />
+                        <Route exact path="/users/:id" render={({ match }) => <UserView userId={match.params.id} />} />
+                        <Route exact path="/login" render={() => <LoginForm />} />
+                        <Route exact path="/register" render={() => <UserRegistrationForm />} />
                     </div>
                 </Router>
             </Container>

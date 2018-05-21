@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getConfig } from '../util/serviceHelper'
 
 const baseUrl = '/api/users'
 
@@ -8,4 +9,10 @@ const getAll = async () => {
     return response.data
 }
 
-export default { getAll }
+const create = async (content) => {
+    const response = await axios.post(baseUrl, content, getConfig())
+
+    return response.data
+}
+
+export default { getAll, create }

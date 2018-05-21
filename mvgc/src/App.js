@@ -11,6 +11,7 @@ import { userInit } from './reducers/userReducer'
 // Components
 import AddGameForm from './components/forms/AddGameForm'
 import LoginForm from './components/forms/LoginForm'
+import UserRegistrationForm from './components/forms/UserRegistrationForm'
 import NavigationMenu from './components/misc/NavigationMenu'
 import GamesView from './components/views/GamesView'
 import PlatformsView from './components/views/PlatformsView'
@@ -41,6 +42,7 @@ class App extends React.Component {
                         <Route exact path='/users' render={() => <UsersList />} />
                         <Route exact path='/users/:id' render={({ match }) => <UserView userId={match.params.id} />} />
                         <Route exact path='/login' render={() => <LoginForm />} />
+                        <Route exact path='/register' render={() => <UserRegistrationForm />} />
                     </div>
                 </Router>
             </Container>

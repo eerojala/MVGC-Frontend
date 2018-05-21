@@ -18,7 +18,7 @@ export const userInit = (data) => {
         dispatch({
             type: 'INIT_USERS',
             data: users
-        })
+        })  
     }
 }
 
@@ -31,6 +31,8 @@ export const userCreation = (content) => {
                 type: 'NEW_USER',
                 data: newUser
             })
+
+        console.log('Successfully registered a new account!')
         } catch (exception) {
             console.log('Error trying to register a new user')
             console.log(exception)

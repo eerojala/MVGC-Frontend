@@ -16,6 +16,9 @@ const NavigationMenu = () => {
                 <Link to ="/users">Users</Link>
             </Menu.Item>
             <Menu.Item link>
+                <Link to="/register">Register</Link>
+            </Menu.Item>
+            <Menu.Item link>
                 <Link to ="/login">Login</Link>
             </Menu.Item>
         </Menu>

@@ -6,6 +6,12 @@ const userReducer = (state = [], action) => {
             return action.data
         case 'NEW_USER':
             return state.concat(action.data)
+        case 'REMOVE_GAME_FROM_USER_COLLECTION':
+            const correctUser = state.find(user => user.id === action.data.userId)
+            const games = correctUser.ownedGames.filter(userGame => userGame._id !== action.data.userGameId)
+            correctUser.ownedGames = games
+            state = state.filter(user => user.id !== correctUser.id)
+            return state.concat(correctUser)
         default:
             return state
     }
@@ -37,6 +43,18 @@ export const userCreation = (content) => {
             console.log('Error trying to register a new user')
             console.log(exception)
         }
+    }
+}
+
+export const removeGameFromUsersCollection = (userId, userGameId) => {
+    return (dispatch) => {
+        dispatch({
+            type: 'REMOVE_GAME_FROM_USER_COLLECTION',
+            data: {
+                userId,
+                userGameId
+            }
+        })
     }
 }
 

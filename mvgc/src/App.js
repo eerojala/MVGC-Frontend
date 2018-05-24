@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { platformInit } from './reducers/platformReducer'
 import { gameInit } from './reducers/gameReducer' 
 import { userInit } from './reducers/userReducer'
+import { userGameInit } from './reducers/userGameReducer'
 
 // Components
 import AddGameForm from './components/forms/AddGameForm'
@@ -25,6 +26,7 @@ class App extends React.Component {
         this.props.platformInit()
         this.props.gameInit()
         this.props.userInit()
+        this.props.userGameInit()
     }
 
     render() {
@@ -50,4 +52,6 @@ class App extends React.Component {
     }
 }
 
-export default connect(null, { platformInit, gameInit, userInit }) (App)
+const mapDispatchToProps = { platformInit, gameInit, userInit, userGameInit }
+
+export default connect(null, mapDispatchToProps) (App)

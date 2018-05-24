@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-class UsersList extends React.Component {
+class UserTable extends React.Component {
     render() {
         return (
             <div>
@@ -33,4 +33,4 @@ const mapStateToProps = (state) => {
     return { users: state.users }
 }
 
-export default connect(mapStateToProps) (UsersList)
+export default connect(mapStateToProps) (UserTable)

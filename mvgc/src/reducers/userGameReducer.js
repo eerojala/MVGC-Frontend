@@ -6,6 +6,9 @@ const userGameReducer = (state = [], action) => {
             return action.data
         case 'NEW_USER_GAME':
             return state.concat(action.data)
+        case 'REMOVE_USER_GAME':
+            const id = action.data
+            return state.filter(userGame => userGame.id !== id)
         default:
             return state
     }
@@ -35,6 +38,24 @@ export const userGameCreation = (content) => {
             console.log('Successfully added game to your collection!')
         } catch (exception) {
             console.log('Error trying to add game to collection')
+            console.log(exception)
+        }
+    }
+}
+
+export const userGameRemoval = (id) => {
+    return async (dispatch) => {
+        try {
+            await userGameService.remove(id)
+
+            dispatch({
+                type: 'REMOVE_USER_GAME',
+                data: id
+            })
+
+            console.log('Successfully removed user game collection entry from the server!')
+        } catch (exception) {
+            console.log('Error trying to remove user game collection entry from the server')
             console.log(exception)
         }
     }

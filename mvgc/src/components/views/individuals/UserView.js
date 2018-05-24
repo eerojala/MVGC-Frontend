@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Table } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import GameCollectionTable from '../tables/GameCollectionTable'
 
 class UserView extends React.Component {
     render () {
@@ -19,30 +18,7 @@ class UserView extends React.Component {
                 </div>
                 <div>
                     <h3>Games:</h3>
-                    <Table>
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell>Game</Table.HeaderCell>
-                                <Table.HeaderCell>Platform</Table.HeaderCell>
-                                <Table.HeaderCell>Status</Table.HeaderCell>
-                                <Table.HeaderCell>Score</Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>
-                            {user.ownedGames.map(ownedGame => 
-                                <Table.Row key={ownedGame._id}>
-                                    <Table.Cell>
-                                        <Link to={`/games/${ownedGame.game._id}`}>{ownedGame.game.name}</Link>
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Link to={`/platforms/${ownedGame.game.platform._id}`}>{ownedGame.game.platform.name}</Link>
-                                    </Table.Cell>
-                                    <Table.Cell>{ownedGame.status}</Table.Cell>
-                                    <Table.Cell>{ownedGame.score}</Table.Cell>
-                                </Table.Row>
-                            )}
-                        </Table.Body>
-                    </Table>
+                    <GameCollectionTable userId={user.id} />
                 </div>
             </div>
         )

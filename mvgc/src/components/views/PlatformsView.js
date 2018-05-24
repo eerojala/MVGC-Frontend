@@ -1,12 +1,12 @@
 import React from 'react'
 import PlatformForm from '../forms/PlatformForm'
-import PlatformsList from './lists/PlatformsList'
+import PlatformTable from './tables/PlatformTable'
 
 const PlatformsView = (props) => {
     return (
         <div>
             <PlatformForm />
-            <PlatformsList />
+            <PlatformTable />
         </div>
     )
 }

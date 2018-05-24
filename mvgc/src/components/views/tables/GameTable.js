@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Table, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-class GamesList extends React.Component {
+class GamesTable extends React.Component {
     render() {
         return (
             <div>
@@ -41,4 +41,4 @@ const mapStateToProps = (state) => {
     return { games: state.games }
 }
 
-export default connect(mapStateToProps) (GamesList)
+export default connect(mapStateToProps) (GamesTable)

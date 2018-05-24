@@ -1,12 +1,12 @@
 import React from 'react'
 import GameCreaftionForm from '../forms/GameCreationForm'
-import GamesList from './lists/GamesList'
+import GameTable from './tables/GameTable'
 
 const GamesView = (props) => {
     return (
         <div>
             <GameCreaftionForm />
-            <GamesList />
+            <GameTable />
         </div>
     )
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-class PlatformsList extends React.Component {
+class PlatformTable extends React.Component {
     render() {
         return (
             <div>
@@ -33,4 +33,4 @@ const mapStateToProps = (state) => {
     return { platforms: state.platforms }
 }
 
-export default connect(mapStateToProps) (PlatformsList)
+export default connect(mapStateToProps) (PlatformTable)

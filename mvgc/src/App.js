@@ -18,7 +18,7 @@ import PlatformsView from './components/views/PlatformsView'
 import GameView from './components/views/individuals/GameView'
 import PlatformView from './components/views/individuals/PlatformView'
 import UserView from './components/views/individuals/UserView'
-import UsersList from './components/views/lists/UsersList'
+import UserTable from './components/views/tables/UserTable'
 
 class App extends React.Component {
     componentDidMount() {
@@ -39,7 +39,7 @@ class App extends React.Component {
                         <Route exact path="/games" render={() => <GamesView />} />
                         <Route exact path="/games/:id" render={({ match }) => <GameView gameId={match.params.id} />} />
                         <Route exact path="/games/:id/add" render={({ match }) => <AddGameForm gameId={match.params.id} />} />
-                        <Route exact path="/users" render={() => <UsersList />} />
+                        <Route exact path="/users" render={() => <UserTable />} />
                         <Route exact path="/users/:id" render={({ match }) => <UserView userId={match.params.id} />} />
                         <Route exact path="/login" render={() => <LoginForm />} />
                         <Route exact path="/register" render={() => <UserRegistrationForm />} />

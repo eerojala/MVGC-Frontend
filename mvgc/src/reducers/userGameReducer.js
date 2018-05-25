@@ -30,7 +30,7 @@ export const userGameCreation = (content) => {
         try {
             let newUserGame = await userGameService.create(content)
             newUserGame = await userGameService.getOne(newUserGame.id) // try to make a more elegant solution, like POST /api/usergames populating on return or something
-            console.log(newUserGame)
+
             dispatch({
                 type: 'NEW_USER_GAME',
                 data: newUserGame

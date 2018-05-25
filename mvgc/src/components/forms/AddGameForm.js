@@ -13,8 +13,11 @@ class AddGameForm extends React.Component {
 
         const content = {
             game: this.props.game.id,
-            status: this.status,
-            score: this.score
+            status: this.status
+        }
+
+        if (this.score !== null && this.score !== undefined) {
+            content.score = this.score
         }
 
         this.props.userGameCreation(content)

@@ -27,11 +27,17 @@ class GameCollectionTable extends React.Component {
             null
     }
 
+    updateButton = (id) => {
+        return this.sameUserLoggedIn() ?
+            <Link to={`/usergames/${id}/update`}>
+                <Button>Update</Button>
+            </Link>:
+            null
+    }
+
     deleteButton = (id) => { 
         return this.sameUserLoggedIn() ?
-            <Table.Cell>
-                <Button onClick={() => { this.removeUserGame(id) } }>Remove</Button>
-            </Table.Cell>:
+            <Button onClick={() => { this.removeUserGame(id) } }>Remove</Button>:
             null
     }
     
@@ -50,7 +56,10 @@ class GameCollectionTable extends React.Component {
                 <Table.Body>
                     {this.props.gameCollection.map(ownedGame => 
                         <Table.Row key={ownedGame.id}>
-                            {this.deleteButton(ownedGame.id)}
+                            <Table.Cell>
+                                {this.updateButton(ownedGame.id)}
+                                {this.deleteButton(ownedGame.id)}
+                            </Table.Cell>
                             <Table.Cell>
                                 <Link to={`/games/${ownedGame.game.id}`}>{ownedGame.game.name}</Link>
                             </Table.Cell>

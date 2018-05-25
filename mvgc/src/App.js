@@ -45,6 +45,7 @@ class App extends React.Component {
                         <Route exact path="/users/:id" render={({ match }) => <UserView userId={match.params.id} />} />
                         <Route exact path="/login" render={() => <LoginForm />} />
                         <Route exact path="/register" render={() => <UserRegistrationForm />} />
+                        <Route exact path="/usergames/:id/update" render={({ match }) => <UserGameForm userGameId={match.params.id} />} />
                     </div>
                 </Router>
             </Container>

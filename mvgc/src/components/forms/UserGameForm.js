@@ -55,11 +55,13 @@ class UserGameForm extends React.Component {
         if (this.props.userGame === null || this.props.userGame === undefined) {
             return <h3>Add {this.props.game.name} ({this.props.game.platform.name}) to your collection</h3>
         } else {
-            return <h3>Update {this.props.game.name} ({this.props.game.platform.name})</h3>
+            return <h3>Update {this.props.userGame.game.name} ({this.props.userGame.game.platform.name})</h3>
         }
     }
 
     render() {
+        console.log(this.props)
+
         const statuses = [
             { key: 0, text: 'Unfinished', value: 'Unfinished' },
             { key: 1, text: 'Beaten', value: 'Beaten' },
@@ -74,7 +76,7 @@ class UserGameForm extends React.Component {
             { key: 5, text: '5', value: 5 }
         ]
 
-        if (this.props.game === null || this.props.game === undefined) {
+        if (this.props.game === null && this.props.userGame === null) {
             return null
         }
 
@@ -102,11 +104,25 @@ class UserGameForm extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
+    const { gameId, userGameId } = props
+    let game, userGame
+    
     if (state.games === null) {
-        return { game: null }
+        return { game: null, userGame: null }
     }
 
-    return { game: state.games.find(game => game.id === props.gameId) }
+    game = (gameId === null || gameId === undefined) ?
+        null:
+        state.games.find(game => game.id === gameId)
+
+    userGame = (userGameId === null || userGameId === undefined) ?
+        null:
+        state.userGames.find(userGame => userGame.id === userGameId)
+
+    return { 
+        game: game,
+        userGame: userGame
+    }
 }
 
 const mapDispatchToProps = { userGameCreation, userGameUpdate }

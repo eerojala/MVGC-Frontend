@@ -9,6 +9,12 @@ const getAll = async () => {
     return response.data
 }
 
+const getOne = async (id) => {
+    const response = await axios.get(`${baseUrl}/${id}`)
+
+    return response.data
+}
+
 const create = async (content) => {
     const response = await axios.post(baseUrl, content, getConfig())
 
@@ -20,4 +26,4 @@ const remove = async (id) => {
     console.log(response)
 }
 
-export default { getAll, create, remove }
+export default { getAll, getOne, create, remove }

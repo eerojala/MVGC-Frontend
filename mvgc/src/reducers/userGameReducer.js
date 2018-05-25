@@ -28,8 +28,9 @@ export const userGameInit = (data) => {
 export const userGameCreation = (content) => {
     return async (dispatch) => {
         try {
-            const newUserGame = await userGameService.create(content)
-
+            let newUserGame = await userGameService.create(content)
+            newUserGame = await userGameService.getOne(newUserGame.id) // try to make a more elegant solution, like POST /api/usergames populating on return or something
+            console.log(newUserGame)
             dispatch({
                 type: 'NEW_USER_GAME',
                 data: newUserGame

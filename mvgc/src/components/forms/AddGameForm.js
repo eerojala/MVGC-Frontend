@@ -17,7 +17,6 @@ class AddGameForm extends React.Component {
             score: this.score
         }
 
-        console.log(content)
         this.props.userGameCreation(content)
     }
 

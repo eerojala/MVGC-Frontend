@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Button, Table } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { userGameRemoval } from '../../../reducers/userGameReducer'
-import { removeGameFromUsersCollection } from '../../../reducers/userReducer'
 
 // Table for displaying an user's game collection
 class GameCollectionTable extends React.Component {
@@ -19,8 +18,8 @@ class GameCollectionTable extends React.Component {
 
     removeUserGame = async (id) => {
         this.props.userGameRemoval(id)
-        this.props.removeGameFromUsersCollection(id)
     }
+        
 
     emptyHeaderCell = () => {
         return this.sameUserLoggedIn() ?
@@ -31,7 +30,7 @@ class GameCollectionTable extends React.Component {
     deleteButton = (id) => { 
         return this.sameUserLoggedIn() ?
             <Table.Cell>
-                <Button onClick={(id) => { this.removeUserGame(id) }}>Remove</Button>
+                <Button onClick={() => { this.removeUserGame(id) } }>Remove</Button>
             </Table.Cell>:
             null
     }
@@ -51,9 +50,9 @@ class GameCollectionTable extends React.Component {
                 <Table.Body>
                     {this.props.gameCollection.map(ownedGame => 
                         <Table.Row key={ownedGame.id}>
-                            {this.deleteButton(ownedGame._id)}
+                            {this.deleteButton(ownedGame.id)}
                             <Table.Cell>
-                                <Link to={`/games/${ownedGame.game._id}`}>{ownedGame.game.name}</Link>
+                                <Link to={`/games/${ownedGame.game.id}`}>{ownedGame.game.name}</Link>
                             </Table.Cell>
                             <Table.Cell>
                                 <Link to={`/platforms/${ownedGame.game.platform._id}`}>{ownedGame.game.platform.name}</Link>
@@ -90,6 +89,6 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-const mapDispatchToProps = { userGameRemoval, removeGameFromUsersCollection }
+const mapDispatchToProps = { userGameRemoval }
 
 export default connect(mapStateToProps, mapDispatchToProps) (GameCollectionTable)

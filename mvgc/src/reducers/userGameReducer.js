@@ -6,6 +6,9 @@ const userGameReducer = (state = [], action) => {
             return action.data
         case 'NEW_USER_GAME':
             return state.concat(action.data)
+        case 'UPDATE_USER_GAME':
+            const userGames = state.filter(userGame => userGame.id !== action.data.id)
+            return userGames.concat(action.data)
         case 'REMOVE_USER_GAME':
             const id = action.data
             return state.filter(userGame => userGame.id !== id)
@@ -29,7 +32,7 @@ export const userGameCreation = (content) => {
     return async (dispatch) => {
         try {
             let newUserGame = await userGameService.create(content)
-            newUserGame = await userGameService.getOne(newUserGame.id) // try to make a more elegant solution, like POST /api/usergames populating on return or something
+            newUserGame = await userGameService.getOne(newUserGame.id) // Try to make a more elegant solution, like POST /api/usergames populating on return or something
 
             dispatch({
                 type: 'NEW_USER_GAME',
@@ -39,6 +42,25 @@ export const userGameCreation = (content) => {
             console.log('Successfully added game to your collection!')
         } catch (exception) {
             console.log('Error trying to add game to collection')
+            console.log(exception)
+        }
+    }
+}
+
+export const userGameUpdate = (id, content) => {
+    return async (dispatch) => {
+        try {
+            await userGameService.update(id, content)
+            const updatedUserGame = await userGameService.getOne(id) // Same as the function above
+
+            dispatch({
+                type: 'UPDATE_USER_GAME',
+                data: updatedUserGame
+            })
+
+            console.log('Successfully updated a game in your collection!')
+        } catch (exception) {
+            console.log('Error trying to update game in a collection')
             console.log(exception)
         }
     }

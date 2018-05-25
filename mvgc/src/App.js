@@ -10,8 +10,8 @@ import { userInit } from './reducers/userReducer'
 import { userGameInit } from './reducers/userGameReducer'
 
 // Components
-import AddGameForm from './components/forms/AddGameForm'
 import LoginForm from './components/forms/LoginForm'
+import UserGameForm from './components/forms/UserGameForm'
 import UserRegistrationForm from './components/forms/UserRegistrationForm'
 import NavigationBar from './components/misc/NavigationMenu'
 import GamesView from './components/views/GamesView'
@@ -40,7 +40,7 @@ class App extends React.Component {
                         <Route exact path="/platforms/:id" render={({ match }) => <PlatformView platformId={match.params.id} />} />
                         <Route exact path="/games" render={() => <GamesView />} />
                         <Route exact path="/games/:id" render={({ match }) => <GameView gameId={match.params.id} />} />
-                        <Route exact path="/games/:id/add" render={({ match }) => <AddGameForm gameId={match.params.id} />} />
+                        <Route exact path="/games/:id/add" render={({ match }) => <UserGameForm gameId={match.params.id} />} />
                         <Route exact path="/users" render={() => <UserTable />} />
                         <Route exact path="/users/:id" render={({ match }) => <UserView userId={match.params.id} />} />
                         <Route exact path="/login" render={() => <LoginForm />} />

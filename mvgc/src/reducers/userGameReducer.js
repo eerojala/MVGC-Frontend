@@ -50,6 +50,7 @@ export const userGameCreation = (content) => {
 export const userGameUpdate = (id, content) => {
     return async (dispatch) => {
         try {
+            console.log(content)
             await userGameService.update(id, content)
             const updatedUserGame = await userGameService.getOne(id) // Same as the function above
 

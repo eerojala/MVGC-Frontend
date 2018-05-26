@@ -5,15 +5,12 @@ import { userGameCreation, userGameUpdate } from '../../reducers/userGameReducer
 
 // Allows users to add games to their collections
 class UserGameForm extends React.Component {
-    status = null
-    score = null
-    
-    defaultStatus = (this.props.userGame === null || this.props.userGame === undefined) ?
-        null:
+    status = (this.props.userGame === null || this.props.userGame === undefined) ?
+        'Unfinished':
         this.props.userGame.status
 
-    defaultScore = (this.props.userGame === null || this.props.userGame === undefined) ?
-        null:
+    score = (this.props.userGame === null || this.props.userGame === undefined || this.props.userGame.score === null) ?
+        'No rating':
         this.props.userGame.score
 
     onSubmit = async (event) => {
@@ -30,10 +27,7 @@ class UserGameForm extends React.Component {
         const content = {
             game: this.props.game.id,
             status: this.status,
-        }
-
-        if (this.score !== null && this.score !== undefined) {
-            content.score = this.score
+            score: this.score
         }
 
         this.props.userGameCreation(content)
@@ -42,12 +36,11 @@ class UserGameForm extends React.Component {
     updateUserGame = async (event) => {
         event.preventDefault()
 
-        const content = { status: this.status }
-
-        if (this.score !== null && this.score !== undefined) {
-            content.score = this.score
+        const content = { 
+            status: this.status,
+            score: this.score 
         }
-
+        console.log(content)
         this.props.userGameUpdate(this.props.userGameId, content)
     }
 
@@ -68,7 +61,7 @@ class UserGameForm extends React.Component {
             { key: 2, text: 'Completed', value: 'Completed' }
         ]
         const scores = [
-            { key: 0, text: 'No rating', value: null },
+            { key: 0, text: 'No rating', value: 'No rating' },
             { key: 1, text: '1', value: 1 },
             { key: 2, text: '2', value: 2 },
             { key: 3, text: '3', value: 3 },
@@ -86,13 +79,13 @@ class UserGameForm extends React.Component {
                 <Form onSubmit={this.onSubmit}>
                     <Form.Select 
                         fluid label="Status" 
-                        defaultValue={this.defaultStatus} 
+                        defaultValue={this.status} 
                         options={statuses} 
                         onChange={(event, {value}) => this.status = value} 
                     />
                     <Form.Select 
                         fluid label="Score" 
-                        defaultValue={this.defaultScore} 
+                        defaultValue={this.score} 
                         options={scores} 
                         onChange={(event, {value}) => this.score = value}
                     />

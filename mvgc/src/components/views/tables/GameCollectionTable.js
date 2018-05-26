@@ -27,18 +27,25 @@ class GameCollectionTable extends React.Component {
             null
     }
 
-    updateButton = (id) => {
+    buttonCell = (id) => {
         return this.sameUserLoggedIn() ?
-            <Link to={`/usergames/${id}/update`}>
-                <Button>Update</Button>
-            </Link>:
+            <Table.Cell>
+                {this.updateButton(id)}
+                {this.deleteButton(id)}
+            </Table.Cell>:
             null
     }
 
+    updateButton = (id) => {
+        return (
+            <Link to={`/usergames/${id}/update`}>
+                <Button>Update</Button>
+            </Link>
+        )
+    }
+
     deleteButton = (id) => { 
-        return this.sameUserLoggedIn() ?
-            <Button onClick={() => { this.removeUserGame(id) } }>Remove</Button>:
-            null
+        return <Button onClick={() => { this.removeUserGame(id) } }>Remove</Button>
     }
     
     render() {
@@ -46,28 +53,25 @@ class GameCollectionTable extends React.Component {
             <Table>
                 <Table.Header>
                     <Table.Row>
-                        {this.emptyHeaderCell()}
                         <Table.HeaderCell>Game</Table.HeaderCell>
                         <Table.HeaderCell>Platform</Table.HeaderCell>
                         <Table.HeaderCell>Status</Table.HeaderCell>
                         <Table.HeaderCell>Score</Table.HeaderCell>
+                        {this.emptyHeaderCell()}
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
                     {this.props.gameCollection.map(ownedGame => 
                         <Table.Row key={ownedGame.id}>
                             <Table.Cell>
-                                {this.updateButton(ownedGame.id)}
-                                {this.deleteButton(ownedGame.id)}
-                            </Table.Cell>
-                            <Table.Cell>
-                                <Link to={`/games/${ownedGame.game.id}`}>{ownedGame.game.name}</Link>
+                                <Link to={`/games/${ownedGame.game._id}`}>{ownedGame.game.name}</Link>
                             </Table.Cell>
                             <Table.Cell>
                                 <Link to={`/platforms/${ownedGame.game.platform._id}`}>{ownedGame.game.platform.name}</Link>
                             </Table.Cell>
                             <Table.Cell>{ownedGame.status}</Table.Cell>
                             <Table.Cell>{ownedGame.score}</Table.Cell>
+                            {this.buttonCell(ownedGame.id)}
                         </Table.Row>
                     )}
                 </Table.Body>

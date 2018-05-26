@@ -48,7 +48,7 @@ class UserGameForm extends React.Component {
             content.score = this.score
         }
 
-        this.props.userGameUpdate(content, this.props.userGame.id)
+        this.props.userGameUpdate(this.props.userGameId, content)
     }
 
     title = () => {

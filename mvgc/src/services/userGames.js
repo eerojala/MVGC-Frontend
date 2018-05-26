@@ -29,7 +29,8 @@ const update = async (id, content) => {
 
 const remove = async (id) => {
     const response = await axios.delete(`${baseUrl}/${id}`, getConfig())
-    console.log(response)
+    
+    return response.data
 }
 
 export default { getAll, getOne, create, update, remove }

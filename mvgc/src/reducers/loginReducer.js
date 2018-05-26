@@ -5,6 +5,8 @@ const loginReducer = (state = null, action) => {
     switch (action.type) {
         case 'LOGIN':
             return action.user
+        case 'LOGOUT':
+            return null
         default:
             return state
     }
@@ -27,6 +29,14 @@ export const login = (credentials) => {
             console.log('Login failed')
             console.log(exception)
         }
+    }
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        dispatch({
+            type: 'LOGOUT'
+        })
     }
 }
 

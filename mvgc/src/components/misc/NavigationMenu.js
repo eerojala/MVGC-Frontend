@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { logout } from '../../reducers/loginReducer'
 
 class NavigationBar extends React.Component  {
     userLoggedIn = () => {
@@ -32,6 +33,12 @@ class NavigationBar extends React.Component  {
             null
     }
 
+    logoutMenuItem = () => {
+        return this.userLoggedIn() ?
+            <Menu.Item onClick={this.props.logout}>Logout</Menu.Item>:
+            null
+    }
+
     render () {
         return (
             <Menu inverted>
@@ -47,6 +54,7 @@ class NavigationBar extends React.Component  {
                 {this.loginMenuItem()}
                 {this.registerMenuItem()}
                 {this.loggedInUserMenuItem()}
+                {this.logoutMenuItem()}
             </Menu>
         )
     }
@@ -56,4 +64,6 @@ const mapStateToProps = (state, props) => {
     return { loggedInUser: state.loggedInUser }
 }
 
-export default connect(mapStateToProps, null) (NavigationBar)
+const mapDispatchToProps = { logout }
+
+export default connect(mapStateToProps, mapDispatchToProps) (NavigationBar)

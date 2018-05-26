@@ -40,7 +40,7 @@ class UserGameForm extends React.Component {
             status: this.status,
             score: this.score 
         }
-        console.log(content)
+
         this.props.userGameUpdate(this.props.userGameId, content)
     }
 
@@ -53,8 +53,6 @@ class UserGameForm extends React.Component {
     }
 
     render() {
-        console.log(this.props)
-
         const statuses = [
             { key: 0, text: 'Unfinished', value: 'Unfinished' },
             { key: 1, text: 'Beaten', value: 'Beaten' },

@@ -22,7 +22,6 @@ const create = async (content) => {
 }
 
 const update = async (id, content) => {
-    console.log(content)
     const response = await axios.put(`${baseUrl}/${id}`, content, getConfig())
 
     return response.data

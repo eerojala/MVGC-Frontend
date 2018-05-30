@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Form, Dropdown, Button } from 'semantic-ui-react'
 import { gameCreation } from '../../reducers/gameReducer'
+import { notification } from '../../reducers/notificationReducer'
 
 // Allows admins to create a new game for the database
 class GameCreationForm extends React.Component {
@@ -18,7 +19,13 @@ class GameCreationForm extends React.Component {
             publishers: event.target.publishers.value.split(", ")
         }
         
-        this.props.gameCreation(content)
+        const game = await this.props.gameCreation(content)
+
+        if (game) {
+            this.props.notification('Game creation successful!', `Successfully created new game ${game.name}`)
+        } else {
+            this.props.notification('Game creation unsuccessful', 'Failed trying to create a new game')
+        }
     }
 
     render() {
@@ -68,6 +75,6 @@ const mapStateToProps = (state) => {
     return { platforms: state.platforms }
 }
 
-const mapDispatchToProps = { gameCreation }
+const mapDispatchToProps = { gameCreation, notification }
 
 export default connect(mapStateToProps, mapDispatchToProps) (GameCreationForm)

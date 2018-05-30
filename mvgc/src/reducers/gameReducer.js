@@ -31,9 +31,11 @@ export const gameCreation = (content) => {
                 type: 'NEW_GAME',
                 data: newGame
             })
+
+            return newGame
         } catch (exception) {
-            console.log('Error trying to create a new game')
             console.log(exception)
+            return null
         }
     }
 }

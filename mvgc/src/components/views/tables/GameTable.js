@@ -4,6 +4,26 @@ import { Table, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class GameTable extends React.Component {
+    emptyHeaderCell = () => {
+        return this.props.loggedInUser === null || this.props.loggedInUser === undefined ?
+            null:
+            <Table.HeaderCell />
+    }
+
+    addButton = (id) => {
+        if (this.props.loggedInUser === null || this.props.loggedInUser === undefined) {
+            return null
+        } else {
+            return (
+                <Table.Cell>
+                    <Link to={`/games/${id}/add`}>
+                        <Button>Add</Button>
+                    </Link>
+                </Table.Cell>
+            )
+        }
+    }
+
     render() {
         return (
             <div>
@@ -11,18 +31,14 @@ class GameTable extends React.Component {
                 <Table>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell></Table.HeaderCell>
+                            {this.emptyHeaderCell()}
                             <Table.HeaderCell>Name</Table.HeaderCell>
                             <Table.HeaderCell>Platform</Table.HeaderCell> 
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
                         {this.props.games.map(game => <Table.Row key={game.id}>
-                            <Table.Cell>
-                                <Link to={`/games/${game.id}/add`}>
-                                    <Button>Add</Button>
-                                </Link>
-                            </Table.Cell>
+                            {this.addButton(game.id)}
                             <Table.Cell>
                                 <Link to={`/games/${game.id}`}>{game.name}</Link>
                             </Table.Cell>
@@ -38,7 +54,7 @@ class GameTable extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { games: state.games }
+    return { games: state.games, loggedInUser: state.loggedInUser }
 }
 
 export default connect(mapStateToProps) (GameTable)

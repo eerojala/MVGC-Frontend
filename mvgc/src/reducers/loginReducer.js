@@ -25,9 +25,11 @@ export const login = (credentials) => {
                 type: 'LOGIN',
                 user: user
             })
+
+            return user
         } catch (exception) {
-            console.log('Login failed')
             console.log(exception)
+            return null
         }
     }
 }

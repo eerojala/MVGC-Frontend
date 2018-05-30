@@ -14,6 +14,7 @@ import LoginForm from './components/forms/LoginForm'
 import UserGameForm from './components/forms/UserGameForm'
 import UserRegistrationForm from './components/forms/UserRegistrationForm'
 import NavigationBar from './components/misc/NavigationMenu'
+import Notification from './components/misc/Notification'
 import GamesView from './components/views/GamesView'
 import PlatformsView from './components/views/PlatformsView'
 import GameView from './components/views/individuals/GameView'
@@ -36,6 +37,7 @@ class App extends React.Component {
                 <Router>
                     <div>
                         <NavigationBar />
+                        <Notification />
                         <Route exact path="/platforms" render={() => <PlatformsView />} />
                         <Route exact path="/platforms/:id" render={({ match }) => <PlatformView platformId={match.params.id} />} />
                         <Route exact path="/games" render={() => <GamesView />} />
@@ -47,7 +49,7 @@ class App extends React.Component {
                         <Route exact path="/register" render={() => <UserRegistrationForm />} />
                         <Route exact path="/usergames/:id/update" render={({ match }) => <UserGameForm userGameId={match.params.id} />} />
                     </div>
-                </Router>
+                </Router>              
             </Container>
         )
     }

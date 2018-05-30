@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { login } from '../../reducers/loginReducer'
+import { notification } from '../../reducers/notificationReducer'
 
 class LoginForm extends React.Component {
     sendLoginCredentials = async (event) => {
@@ -14,7 +15,13 @@ class LoginForm extends React.Component {
         event.target.username.value = ''
         event.target.password.value = ''
 
-       this.props.login(credentials)
+        const user = await this.props.login(credentials)
+        
+        if (user !== null) {
+            this.props.notification('Login successful!', `Successfully logged in as ${user.username}`)
+        } else {
+            this.props.notification('Login failed', 'Incorrect username or password')
+        }
     }
 
     render() {
@@ -31,6 +38,6 @@ class LoginForm extends React.Component {
     }
 }
 
-const mapDispatchToProps = { login }
+const mapDispatchToProps = { login, notification }
 
 export default connect(null, mapDispatchToProps) (LoginForm)

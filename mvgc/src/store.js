@@ -6,13 +6,15 @@ import gameReducer from './reducers/gameReducer'
 import loginReducer from './reducers/loginReducer'
 import userReducer from './reducers/userReducer'
 import userGameReducer from './reducers/userGameReducer'
+import notificationReducer from './reducers/notificationReducer'
 
 const reducer = combineReducers({
     platforms: platformReducer,
     games: gameReducer,
     loggedInUser: loginReducer,
     users: userReducer, 
-    userGames: userGameReducer
+    userGames: userGameReducer,
+    notification: notificationReducer
 })
 
 const store = createStore(

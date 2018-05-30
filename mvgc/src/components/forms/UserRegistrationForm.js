@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Form, Button } from 'semantic-ui-react'
+import Redirector from '../misc/Redirector'
 import { userCreation } from '../../reducers/userReducer'
+import { notification } from '../../reducers/notificationReducer'
+import { redirect } from '../../reducers/redirectReducer'
 import { usernameValid, passwordValid } from '../../util/validityChecks'
 
 class UserRegistrationForm extends React.Component {
@@ -20,6 +23,14 @@ class UserRegistrationForm extends React.Component {
             }
     
             this.props.userCreation(content)
+            this.props.redirect('/login')
+            this.props.notification('Registration successful', `Successfully registered new account ${username}`)
+        } else {
+            if (!usernameValid(username, usernames)) {
+                this.props.notification('Registration failed', 'Username must be unique and atleast 3 characters long')
+            } else if (!passwordValid(password, passwordRepeat)) {
+                this.props.notification('Registration failed', 'Password must be atleast 5 characters long and match the repeat check')
+            }
         }
     }
 
@@ -33,6 +44,7 @@ class UserRegistrationForm extends React.Component {
                     <Form.Field label="Repeat password" name="passwordRepeat" control="input" type="password" />
                     <Button type="submit">Register</Button>
                 </Form>
+                <Redirector />
             </div>
         )
     }
@@ -42,6 +54,6 @@ const mapStateToProps = (state) => {
     return { users: state.users }
 }
 
-const mapDispatchToProps = { userCreation }
+const mapDispatchToProps = { userCreation, notification, redirect }
 
 export default connect(mapStateToProps, mapDispatchToProps) (UserRegistrationForm)

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Button, Table } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { userGameRemoval } from '../../../reducers/userGameReducer'
+import { notification } from '../../../reducers/notificationReducer'
 
 // Table for displaying an user's game collection
 class GameCollectionTable extends React.Component {
@@ -17,7 +18,11 @@ class GameCollectionTable extends React.Component {
     }
 
     removeUserGame = async (id) => {
-        this.props.userGameRemoval(id)
+        if (this.props.userGameRemoval(id)) {
+            this.props.notification('Success!', 'Successfully removed game from collection')
+        } else {
+            this.props.notification('Error', 'Error trying to remove a game from collection')
+        }
     }
         
 
@@ -102,6 +107,6 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-const mapDispatchToProps = { userGameRemoval }
+const mapDispatchToProps = { userGameRemoval, notification }
 
 export default connect(mapStateToProps, mapDispatchToProps) (GameCollectionTable)

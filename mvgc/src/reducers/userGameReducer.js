@@ -76,10 +76,10 @@ export const userGameRemoval = (id) => {
                 data: id
             })
 
-            console.log('Successfully removed user game collection entry from the server!')
+            return true
         } catch (exception) {
-            console.log('Error trying to remove user game collection entry from the server')
             console.log(exception)
+            return false
         }
     }
 }

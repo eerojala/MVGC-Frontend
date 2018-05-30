@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Redirector from '../misc/Redirector'
 import { login } from '../../reducers/loginReducer'
 import { notification } from '../../reducers/notificationReducer'
+import { redirect } from '../../reducers/redirectReducer'
 
 class LoginForm extends React.Component {
     sendLoginCredentials = async (event) => {
@@ -16,8 +18,9 @@ class LoginForm extends React.Component {
         event.target.password.value = ''
 
         const user = await this.props.login(credentials)
-        
+
         if (user !== null) {
+            this.props.redirect('')
             this.props.notification('Login successful!', `Successfully logged in as ${user.username}`)
         } else {
             this.props.notification('Login failed', 'Incorrect username or password')
@@ -33,11 +36,12 @@ class LoginForm extends React.Component {
                     <div>Password: <input name="password" type="password" /></div>     
                     <button>Log in</button>
                 </form>
+                <Redirector />
             </div>
         )
     }
 }
 
-const mapDispatchToProps = { login, notification }
+const mapDispatchToProps = { login, notification, redirect }
 
 export default connect(null, mapDispatchToProps) (LoginForm)

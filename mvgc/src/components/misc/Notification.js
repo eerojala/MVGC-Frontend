@@ -8,8 +8,6 @@ class Notification extends React.Component {
             return null
         }
 
-        console.log(this.props)
-
         return(
             <Message>
                 <Message.Header>{this.props.notification.header}</Message.Header>

@@ -7,6 +7,7 @@ import loginReducer from './reducers/loginReducer'
 import userReducer from './reducers/userReducer'
 import userGameReducer from './reducers/userGameReducer'
 import notificationReducer from './reducers/notificationReducer'
+import redirectReducer from './reducers/redirectReducer'
 
 const reducer = combineReducers({
     platforms: platformReducer,
@@ -14,7 +15,8 @@ const reducer = combineReducers({
     loggedInUser: loginReducer,
     users: userReducer, 
     userGames: userGameReducer,
-    notification: notificationReducer
+    notification: notificationReducer,
+    redirect: redirectReducer
 })
 
 const store = createStore(

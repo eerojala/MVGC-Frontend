@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class PlatformView extends React.Component {
     render () {
@@ -20,7 +21,11 @@ class PlatformView extends React.Component {
                 <div>
                     <h3>Games: </h3>
                     <ul>
-                        {platform.games.map(game => <li key={game._id}>{game.name}</li>)}
+                        {platform.games.map(game => 
+                            <li key={game._id}>
+                                <Link to={`/games/${game._id}`}>{game.name}</Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>

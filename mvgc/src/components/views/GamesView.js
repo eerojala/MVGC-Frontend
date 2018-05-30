@@ -5,11 +5,9 @@ import GameTable from './tables/GameTable'
 
 class GamesView extends React.Component {
     form = () => {
-        console.log(this.props)
         if (this.props.loggedInUser === null || this.props.loggedInUser === undefined || this.props.loggedInUser.role !== 'Admin' ) {
             return null
         } else {
-            console.log('got here')
             return <GameCreationForm />
         }
     }

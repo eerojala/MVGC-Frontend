@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Container } from 'semantic-ui-react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 // Reducer functions
 import { platformInit } from './reducers/platformReducer'
@@ -16,6 +16,7 @@ import UserRegistrationForm from './components/forms/UserRegistrationForm'
 import NavigationBar from './components/misc/NavigationMenu'
 import Notification from './components/misc/Notification'
 import GamesView from './components/views/GamesView'
+import Home from './components/views/Home'
 import PlatformsView from './components/views/PlatformsView'
 import GameView from './components/views/individuals/GameView'
 import PlatformView from './components/views/individuals/PlatformView'
@@ -33,11 +34,14 @@ class App extends React.Component {
     render() {
         return (
             <Container>
-                <h1>My video game collection</h1>
                 <Router>
                     <div>
+                        <h1>
+                            <Link to="/">My video game collection</Link>
+                        </h1>
                         <NavigationBar />
                         <Notification />
+                        <Route exact path="/" render={() => <Home />} />
                         <Route exact path="/platforms" render={() => <PlatformsView />} />
                         <Route exact path="/platforms/:id" render={({ match }) => <PlatformView platformId={match.params.id} />} />
                         <Route exact path="/games" render={() => <GamesView />} />

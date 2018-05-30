@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Form } from 'semantic-ui-react'
+import Redirector from '../misc/Redirector'
 import { userGameCreation, userGameUpdate } from '../../reducers/userGameReducer'
+import { notification } from '../../reducers/notificationReducer'
+import { redirect } from '../../reducers/redirectReducer'
 
 // Allows users to add games to their collections
 class UserGameForm extends React.Component {
@@ -30,7 +33,14 @@ class UserGameForm extends React.Component {
             score: this.score
         }
 
-        this.props.userGameCreation(content)
+        const userGame = await this.props.userGameCreation(content)
+
+        if (userGame === null) {
+            this.props.notification('Error', 'Failure trying to add a new game to collection')
+        } else {
+            this.props.redirect('/games')
+            this.props.notification('Success!', 'Successfully added game to collection')
+        }
     }
 
     updateUserGame = async (event) => {
@@ -41,7 +51,14 @@ class UserGameForm extends React.Component {
             score: this.score 
         }
 
-        this.props.userGameUpdate(this.props.userGameId, content)
+        const userGame = await this.props.userGameUpdate(this.props.userGameId, content)
+
+        if (userGame === null) {
+            this.props.notification('Error', 'Failure trying to update game collection entry')
+        } else {
+            this.props.redirect(`/users/${userGame.user._id}`)
+            this.props.notification('Success!', 'Successfully updated game collection entry')
+        }
     }
 
     title = () => {
@@ -89,6 +106,7 @@ class UserGameForm extends React.Component {
                     />
                     <Form.Button type="submit">Submit</Form.Button>
                 </Form>
+                <Redirector />
             </div>
         )
     }
@@ -116,6 +134,6 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-const mapDispatchToProps = { userGameCreation, userGameUpdate }
+const mapDispatchToProps = { userGameCreation, userGameUpdate, notification, redirect }
 
 export default connect(mapStateToProps, mapDispatchToProps) (UserGameForm)

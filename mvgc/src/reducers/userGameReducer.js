@@ -39,10 +39,10 @@ export const userGameCreation = (content) => {
                 data: newUserGame
             })
 
-            console.log('Successfully added game to your collection!')
+            return newUserGame
         } catch (exception) {
-            console.log('Error trying to add game to collection')
             console.log(exception)
+            return null
         }
     }
 }
@@ -58,10 +58,10 @@ export const userGameUpdate = (id, content) => {
                 data: updatedUserGame
             })
 
-            console.log('Successfully updated a game in your collection!')
+            return updatedUserGame
         } catch (exception) {
-            console.log('Error trying to update game in a collection')
             console.log(exception)
+            return null
         }
     }
 }
